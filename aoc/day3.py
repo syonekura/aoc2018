@@ -3,12 +3,11 @@ import numpy as np
 
 
 def update_fabric(fabric, claim) -> np.ndarray:
-    fabric = np.copy(fabric)
     pattern = re.compile(r'#(\d+)\s@\s(\d+),(\d+):\s(\d+)x(\d+)')
     id, x, y, width, height = tuple(
         int(x) for x in pattern.sub('\\1 \\2 \\3 \\4 \\5', claim).split())
     fabric[y:(y+height), x:(x+width)] += 1
-    return np.copy(fabric)
+    return fabric
 
 
 def overlap(claims, width, height) -> int:
