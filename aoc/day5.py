@@ -3,7 +3,7 @@ from functools import reduce
 
 def process_polymer(example: str):
     def reduction(x, y):
-        if len(x) > 0 and condition(x[-1], y):
+        if len(x) > 0 and _condition(x[-1], y):
             return x[:-1]
         else:
             return x + y
@@ -14,15 +14,19 @@ def process_polymer(example: str):
             return example
 
 
-def search_units(value: str):
+def _search_units(value: str):
     for i, (x, y) in enumerate(zip(value[:-1], value[1:])):
-        if condition(x, y):
+        if _condition(x, y):
             return i
     return None
 
 
-def condition(x, y) -> bool:
+def _condition(x, y) -> bool:
     return x != y and (str.upper(x) == y or str.lower(x) == y)
+
+
+def shortest_polymer(example):
+    return None
 
 
 if __name__ == '__main__':
