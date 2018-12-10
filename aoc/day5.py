@@ -1,4 +1,5 @@
 from functools import reduce
+import string
 
 
 def process_polymer(example: str):
@@ -14,19 +15,14 @@ def process_polymer(example: str):
             return example
 
 
-def _search_units(value: str):
-    for i, (x, y) in enumerate(zip(value[:-1], value[1:])):
-        if _condition(x, y):
-            return i
-    return None
-
-
 def _condition(x, y) -> bool:
     return x != y and (str.upper(x) == y or str.lower(x) == y)
 
 
-def shortest_polymer(example):
-    return None
+def shortest_polymer(example: str):
+    a = [(len(process_polymer(example.replace(low, '').replace(up, ''))), low)
+         for low, up in zip(string.ascii_lowercase, string.ascii_uppercase)]
+    return min(a, key=lambda x: x[0])
 
 
 if __name__ == '__main__':
@@ -34,3 +30,4 @@ if __name__ == '__main__':
         polymers = file.read()
 
     print(f'Units remaining: {len(process_polymer(polymers))}')
+    print(f'Shortest Polymer: {shortest_polymer(polymers)}')

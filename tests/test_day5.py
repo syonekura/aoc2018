@@ -10,7 +10,7 @@ def test_example(example, expected):
 
 
 @pytest.mark.parametrize("example, expected", [
-    ('dabAcCaCBAcCcaDA', 'daDA')
+    ('dabAcCaCBAcCcaDA', (4, 'c'))
 ])
 def test_shortest_polymer(example, expected):
     assert day5.shortest_polymer(example) == expected
