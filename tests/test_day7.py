@@ -13,3 +13,7 @@ Step F must be finished before step E can begin.
 
 def test_order():
     assert day7.compute_order(example) == 'CABDFE'
+
+
+def test_distribute_work():
+    assert day7.distribute_work(example, 2, offset=0) == 15
