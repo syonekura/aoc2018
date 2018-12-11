@@ -1,6 +1,5 @@
 import re
 from collections import defaultdict
-from functools import reduce
 
 
 def _parse_steps(raw_steps):
