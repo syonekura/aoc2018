@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 requests = "*"
 numpy = "*"
+matplotlib = "*"
 
 [dev-packages]
 pytest = "*"
